@@ -1,0 +1,39 @@
+<view class="container">
+	<view class="header">
+		<image class="plus" src="../../images/plus.png" />
+		<input class="new-todo" value="{{ input }}" placeholder="输入你想做的事情吧" auto-focus bindinput="inputChangeHandle" bindconfirm="addTodoHandle" />
+	</view>
+
+	<block wx:if="{{ todos.length }}">
+		<view class="todos">
+			<!-- List items should get the class `completed` when marked as completed -->
+			<view class="item{{ item.completed ? ' completed' : '' }}" wx:for="{{ todos }}" wx:key="{{ index }}" bindtap="toggleTodoHandle" data-index="{{ index }}">
+				<!-- completed: success, todo: circle -->
+				<icon class="checkbox" type="{{ item.completed ? 'success' : 'circle' }}" />
+				<text class="name">{{ item.name }}</text>
+				<icon class="remove" type="clear" size="16" catchtap="removeTodoHandle" data-index="{{ index }}" />
+			</view>
+		</view>
+
+	</block>
+
+	<view class="footer">
+		<text class="btn" bindtap="toggleAllHandle">全部清除</text>
+
+		<text class="itemLeft" wx:if="{{ leftCount }}">还有{{ leftCount }}个任务没做哦</text>
+		<text class="itemLeft" wx:else>任务全部完成啦</text>
+	</view>
+
+	<block wx:if="{{ leftCount }}">
+		<view class="tip">
+			<text class="title">加油</text>
+			<image style="width: 200px; height: 200px; background-color: #eeeeee;" src="/images/Goon.png"></image>
+		</view>
+	</block>
+	<block wx:else>
+		<view class="tip">
+			<text class="title">超级棒</text>
+			<image style="width: 200px; height: 200px; background-color: #eeeeee;" src="/images/congratulations.png"></image>
+		</view>
+	</block>
+</view>

@@ -1,0 +1,15 @@
+<form bindsubmit="Update" class="info">
+    <input placeholder="请输入课程名称" name="name"></input>
+    <input placeholder="请输入上课地点" name="location"></input>
+    <input placeholder="请输入上课日期（例如：周一即填1）" name="lessonDay"></input>
+    <input placeholder="请输入上课开始时间（例如：第一节课即填1）" name="lessonTime"></input>
+    <input placeholder="请输入课程节数（例如：两节课即填2）" name="lessonLength"></input>
+    <input placeholder="请输入是否为双周（是则填双周，否则不填）" name="judge"></input>
+
+    <button form-type="submit">保存</button>
+</form>
+
+
+
+
+

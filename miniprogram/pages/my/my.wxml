@@ -1,0 +1,35 @@
+<!-- 我的页面 -->
+
+<!-- 开发者：cyh -->
+
+<!-- 哈哈哈 -->
+
+<!-- 登录页面 -->
+<view class="myLogin">
+	<block wx:if="{{isLogin}}">
+		<image src="{{src}}"></image>
+		<text>{{nickName}}</text>
+	</block>
+
+	<block wx:else>
+		<image src="/images/defaultHead.png"></image>
+		<button open-type="getUserInfo" bindgetuserinfo="getMyInfo">未登录，点击登录</button>
+	</block>
+</view>
+
+<!-- 列表 -->
+<view class="list">
+	<view class="box" bindtap="goToWeather">
+		<image class="logo" src="/images/weatherLogo.png"></image>
+		<text>天气</text>
+		<image class="rightArrow" src="/images/rightarrow.png"></image>
+	</view>
+
+	<view class="box" bindtap="goToLessonTable">
+		<image class="logo" src="/images/lessonTable.png"></image>
+		<text>课表</text>
+		<image class="rightArrow" src="/images/rightarrow.png"></image>
+	</view>
+
+	<text class="more">更多功能，敬请期待</text>
+</view>

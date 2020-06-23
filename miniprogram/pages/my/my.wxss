@@ -1,0 +1,56 @@
+/* 登陆部分 */
+.myLogin {
+    height: 250rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.myLogin image {
+    height: 100rpx;
+    width: 100rpx;
+    border-radius: 50%;
+}
+
+.myLogin text {
+    color: black;
+}
+
+/* 列表部分 */
+.list{
+    display: flex;
+    flex-direction: column;
+    line-height: 20rpx;
+}
+.list image {
+    height: 40rpx;
+    width: 40rpx;
+}
+.list text {
+    font-size: 30rpx;
+    margin-left: 20rpx;
+}
+.rightArrow {
+    margin-left: 570rpx;
+}
+.logo{
+    margin-left: 10rpx;
+}
+
+.box {
+    height: 80rpx;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 1rpx gray solid;
+}
+
+.more{
+    display: flex;
+    flex-direction: column;
+    margin-top: 50rpx;
+    align-items: center;
+}

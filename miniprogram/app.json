@@ -1,0 +1,51 @@
+{
+  "pages": [
+    "pages/news/news",
+    "pages/index/index",
+    "pages/my/my",
+    "pages/weather/weather",
+    "pages/moreWeather/moreWeather",
+    "pages/url/url",
+    "pages/lessonTable/lessonTable",
+    "pages/editLesson/editLesson",
+    "pages/deleteLesson/deleteLesson"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "柯基校园助手",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#000000",
+    "selectedColor": "#000000",
+    "list": [
+      {
+        "pagePath": "pages/news/news",
+        "text": "资讯",
+        "iconPath": "./images/news1.png",
+        "selectedIconPath": "./images/news2.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "任务清单",
+        "iconPath": "./images/todo1.png",
+        "selectedIconPath": "./images/todo2.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "./images/my1.png",
+        "selectedIconPath": "./images/my2.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}

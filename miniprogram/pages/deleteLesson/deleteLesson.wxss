@@ -1,0 +1,13 @@
+.info{
+    margin-top: 20rpx;
+    margin-left: 30rpx;
+}
+
+input{
+    margin-left: 30rpx;
+    margin-top: 20rpx;
+}
+
+button{
+    margin-top: 40rpx;
+}

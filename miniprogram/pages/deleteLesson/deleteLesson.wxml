@@ -1,0 +1,5 @@
+<form bindsubmit="delete" class="info">
+    <input placeholder="请输入该课程上课日期" name="lessonDay"></input>
+    <input placeholder="请输入该课程开始时间" name="lessonTime"></input>
+    <button form-type="submit">删除</button>
+</form>

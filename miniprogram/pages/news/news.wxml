@@ -1,0 +1,148 @@
+﻿<!-- 资讯页面 -->
+
+<!-- 顶部导航条 -->
+<view class='topTabSwiper'>
+	<view class='tab  {{currentData == 0 ? "tabBorer" : ""}}' data-current="0" bindtap='checkCurrent'>
+		<image class="logo" src="/images/weiboLogo.png"></image> <!-- 微博logo -->
+	</view>
+
+	<view class='tab  {{currentData == 1 ? "tabBorer" : ""}}' data-current="1" bindtap='checkCurrent'>
+	  <image class="logo" src="/images/zhihuLogo.png"></image> <!-- 知乎logo -->
+	</view>
+
+	<view class='tab  {{currentData == 2 ? "tabBorer" : ""}}' data-current="2" bindtap='checkCurrent'>
+		<image class="logo" src="/images/doubanLogo.png"></image> <!-- 豆瓣logo -->
+	</view>
+
+	<view class='tab  {{currentData == 3 ? "tabBorer" : ""}}' data-current="3" bindtap='checkCurrent'>
+	   <image class="logo" src="/images/wangyiLogo.png"></image> <!-- 网易新闻logo -->
+	 </view>
+</view>
+
+
+<!-- 滑动切换子页面 -->
+<swiper current="{{currentData}}" class='swiper' style="height:600px;" duration="300" bindchange="bindchange">
+	<!-- 微博页 -->
+	<swiper-item>
+		<scroll-view class="scroll" scroll-y="true"> <!-- 页面滚动效果 -->
+			<view class="background">
+				<image class="back"></image> <!-- 背景图 -->
+			</view>
+			<view class="weibo_big_title"><!--标题-->
+			<view class="time">实时热点，更新于{{time}}</view></view>
+			<view class="divline"></view>
+			<!-- 每个i代表一条热搜，循环输出每条热搜的数据 -->
+			<block wx:key="resou" wx:for="{{hotsearches}}" wx:for-index="key" wx:for-item="i">
+				<!-- 热搜和热度 -->
+				<view class="weibo_info">
+					<text class='{{key<=2 ? "weibo_hot_item_red":"weibo_hot_item"}}'>{{key+1}}</text>
+					<text class="weibo_hot_word">{{i.hot_word}} </text>
+					<text class="weibo_hot_num">{{i.hot_word_num}}</text>
+				</view>
+				<!--分割线-->
+				<view class="divline"></view>
+			</block>	
+			<text>\n\n</text>
+		</scroll-view>
+	</swiper-item>
+
+	<!-- 知乎页 -->
+	<swiper-item>
+		<scroll-view class="scroll" scroll-y="true"> <!-- 页面滚动效果 -->		
+			<!-- 每个i代表一个日报，循环输出每篇日报的数据 -->
+			<view class="zhihu_title">最新日报：更新于{{time}}</view>
+			<view class="zhihu_inside"><!--每日日报的分栏-->
+				<block wx:key="ribao" wx:for="{{stories}}" wx:for-index="key" wx:for-item="i">
+					<!-- 标题+图片=一个模块 -->
+					<view class="zhihu_block">
+						<!-- 日报图片，可点按跳转到外链 -->
+						<view class="zhihu_picture" bindtap='gotoUrl' data-url="{{i.url}}">
+							<image class="zzp1" src="{{i.images}}" mode="aspectFit"/>
+						</view>
+						<!-- 日报标题，可点按跳转到外链 -->
+						<view class="zhihu_info" bindtap='gotoUrl' data-url="{{i.url}}">
+							<text >{{i.title}}\n\n</text>
+						</view>
+						<view class="divline"></view>
+					</view>
+				</block>
+			</view>
+			<!-- 每个i代表一个日报，循环输出每篇日报的数据 -->
+			<view class="zhihu_title">最新日报：更新于{{time}}</view>
+			<view class="zhihu_inside"><!--每日日报的分栏-->
+				<block wx:key="daily" wx:for="{{top_stories}}" wx:for-index="key" wx:for-item="i">
+					<!-- 标题+图片=一个模块 -->
+					<view class="zhihu_block">
+						<!-- 日报图片，可点按跳转到外链 -->
+						<view class="zhihu_picture" bindtap='gotoUrl' data-url="{{i.url}}">
+							<image class="zzp1" src="{{i.image}}" mode="aspectFit"/>
+						</view>
+						<!-- 日报标题，可点按跳转到外链 -->
+						<view class="zhihu_info" bindtap='gotoUrl' data-url="{{i.url}}">
+							<text >{{i.title}}\n\n</text>
+						</view>
+						<view class="divline"></view>
+					</view>
+				</block>
+			</view>
+			<text>\n</text>
+		</scroll-view>
+	</swiper-item>
+
+	<!-- 豆瓣页 -->
+	<swiper-item>
+		<scroll-view class="scroll" scroll-y="true"> <!-- 页面滚动效果 -->
+			<!-- 每个i代表一个电影，循环输出每部电影的数据 -->
+			<block wx:key="movie" wx:for="{{movies}}" wx:for-item="i">
+				<!-- 内页图签 -->
+				<view class="douban_inside">
+					<!-- 电影图片 -->
+					<view class="douban_picture">
+						<image src="{{i.subject.images.medium}}" mode="aspectFit"/>
+					</view>
+					<!-- 电影信息 -->
+					<view class="douban_info">
+						<!-- 片名、评分和类型 -->
+						<text>片名：{{i.subject.title}}（{{i.subject.rating.average}}）\n</text>
+						<text >类型：{{i.subject.genres}}\n\n</text>
+						<!-- 循环输出导演信息 -->
+						<block wx:key="director" wx:for="{{i.subject.directors}}" wx:for-item="j">
+							<text >导演：{{j.name}}</text>
+						</block>
+						<!-- 循环输出主演信息 -->
+						<block wx:key="actor" wx:for="{{i.subject.casts}}" wx:for-item="k">                         
+							<view >主演：{{k.name}}</view>
+						</block>
+						<!-- 发行日期 -->
+						<text>\n{{i.subject.pubdates}}</text>
+						<text>\n</text>
+					</view>
+				</view>
+			</block>
+			<text>\n</text>
+		</scroll-view>
+	</swiper-item>
+
+	<!-- 网易新闻页 -->
+	<swiper-item>
+		<scroll-view class="scroll" scroll-y="true"> <!-- 页面滚动效果 -->
+			<!-- 每个i代表一条新闻，循环输出每条新闻的数据 -->
+			<block wx:key="xinwen" wx:for="{{news}}" wx:for-index="key" wx:for-item="i">
+				<!-- 内页图签 -->
+				<view class="toutiao_inside">
+					<!-- 新闻标题，可点按跳转到外链 -->
+					<view class="toutiao_info" bindtap='gotoUrl' data-url="{{i.m_url}}">
+						<text >{{i.title}}\n\n</text>
+					</view>
+					<!-- 新闻图片，可点按跳转到外链 -->
+					<view class="toutiao_picture" bindtap='gotoUrl' data-url="{{i.m_url}}">
+						<image class="ttp" src="{{i.imgsrc}}" mode="aspectFit"/>
+					</view>
+				</view>
+				<!-- 分割线 -->
+				<view class="divline"></view>
+			</block>
+			<text>\n</text>
+		</scroll-view>
+	</swiper-item>
+</swiper>

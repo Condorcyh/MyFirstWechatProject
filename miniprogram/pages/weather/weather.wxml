@@ -1,0 +1,34 @@
+<!-- 天气查询页面 -->
+<!-- 自动获取所在位置，显示天气，也可选择地区查看天气 -->
+
+<view class="container">
+	<image class="background" src="/images/weatherBackground2.jpg"></image>
+
+	<view class="outside">
+		<view class="left">
+			<image class="left-image" src="/images/{{daily_forecast.cond_code_d}}.png"></image>
+			<text class="left-text1">{{now.tmp}}℃ {{now.cond_txt}}</text>
+			<text class="left-text2">更新时间</text>
+			<text class="left-text2">{{time}}</text>
+		</view>
+
+		<view class="right">
+			<text class="right-text1">当前地区：{{province}}, {{city}}</text>
+			<text class="right-text1">最高温度：{{daily_forecast.tmp_max}}</text>
+			<text class="right-text1">最低温度：{{daily_forecast.tmp_min}}</text>
+            <text class="right-text1">湿度：{{now.hum}}%</text>
+            <text class="right-text1">气压：{{now.pres}}hPa</text>
+            <text class="right-text1">能见度：{{now.vis}}km</text>
+           	<text class="right-text1">风向：{{now.wind_dir}}</text>
+			<text class="right-text1">风速：{{daily_forecast.wind_spd}}</text>
+			<text class="right-text1">风力：{{daily_forecast.wind_sc}}</text>
+			<text class="right-text1">日出：{{daily_forecast.sr}}</text>
+			<text class="right-text1">日落：{{daily_forecast.ss}}</text>
+			<text class="right-text1">建议：{{lifestyle.txt}}</text>
+			<button bindtap="goToMore">查看更多天气</button>
+		</view>
+	</view>
+</view>
+
+
+
