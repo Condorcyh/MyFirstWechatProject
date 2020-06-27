@@ -17,7 +17,7 @@ Page({
     })
   },
 
-  deleteLesson: function (){
+  deleteLesson: function () {
     wx.navigateTo({
       url: '/pages/deleteLesson/deleteLesson',
     })
@@ -27,20 +27,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //先获取个人openid
-    wx.cloud.callFunction({
-      name: 'login',
-      data: {},
-      success: res => {
-        //console.log('[云函数] [login] 调用成功: ', res.result.openid)
-        app.globalData.openid = res.result.openid
-      },
-      fail: err => {
-        console.error('[云函数] [login] 调用失败', err)
-      }
-    })
-    let openId = app.globalData.openid
-
+    var openId = app.globalData.openid
+    console.log("用户的openid是：" + app.globalData.openid)
     //通过openId查数据库，查出属于该用户的所有记录
     lessons.where({
       openid: openId
@@ -51,9 +39,9 @@ Page({
         //不在的话就加入，在的话就跳过
         for (var i = 0; i < res.data.length; i++) {
           var In = false;
-          for(var j=0; j<this.data.lessonList.length; j++) {
-            let lessonid = openId+this.data.lessonList[j].lessonDay+"_"+this.data.lessonList[j].lessonTime
-            if (res.data[i].lessonid==lessonid) {
+          for (var j = 0; j < this.data.lessonList.length; j++) {
+            let lessonid = openId + this.data.lessonList[j].lessonDay + "_" + this.data.lessonList[j].lessonTime
+            if (res.data[i].lessonid == lessonid) {
               In = true;
             }
           }
